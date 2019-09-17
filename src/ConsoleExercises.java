@@ -11,7 +11,10 @@ public class ConsoleExercises {
         System.out.format("The value of pi is approximately %.2f%n", pi);
 
         System.out.println("Please enter an integer:");
-        int userInt = input.nextInt();
+
+        int userInt = Integer.parseInt(input.nextLine());
+//        input.nextLine();
+
         System.out.format("Your integer is: %s%n", userInt);
 
         System.out.println("Please enter three different words.");
