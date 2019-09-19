@@ -63,22 +63,9 @@ public class MethodsExercises {
         return num1 + recursiveMult(num1, num2 - 1);
     }
 
-    // Problem 2
-//        Create a method that validates that user input is in a certain range
-//        The method signature should look like this:
-//
-//        public static int getInteger(int min, int max);
-//        and is used like this:
-//
-//        System.out.print("Enter a number between 1 and 10: ");
-//        int userInput = getInteger(1, 10);
-//        If the input is invalid, prompt the user again.
-//                Hint: recursion might be helpful here!
-
     public static int getInteger(int min, int max) {
         Scanner input = new Scanner(System.in);
         if (input.hasNextInt()) {
-//            System.out.println("Valid input.");
             int userInput = Integer.parseInt(input.nextLine());
             if (userInput < min || userInput > max) {
                 System.out.println("Invalid input: You must input an integer between 1 and 10.");
@@ -112,6 +99,16 @@ public class MethodsExercises {
 //            3! = 1 x 2 x 3       = 6
 //            4! = 1 x 2 x 3 x 4   = 24
 
+    public static void calculateFactorial() {
+        System.out.println("Please enter an integer from 1 to 10.");
+        int userInteger = getInteger(1, 10);
+        long factorialSum = 1;
+        for (int i = 1; i <= userInteger; i++) {
+            factorialSum *= i;
+        }
+        System.out.format("%d! = %d", userInteger, factorialSum);
+    }
+
     // Problem 4: Roll the Dice
 
     public static void rollDice(int diceSize) {
@@ -143,8 +140,11 @@ public class MethodsExercises {
 //        System.out.println(recursiveMult(9, -5));
 
         // Problem #2 Method Calls
-        System.out.print("Enter a number between 1 and 10: ");
-        int userInput = getInteger(1, 10);
+//        System.out.print("Enter a number between 1 and 10: ");
+//        int userInput = getInteger(1, 10);
+
+        // Problem #3 Method Calls
+        calculateFactorial();
 
         // Problem #4 Method Calls
 //        System.out.println("Please enter the number of sides for the dice:");
