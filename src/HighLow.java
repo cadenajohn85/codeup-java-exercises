@@ -22,35 +22,63 @@ public class HighLow {
 //    Keep track of how many guesses a user makes.
 //    Set an upper limit on the number of guesses.
 
-    public static void validateRangeOf(int userGuess) {
-        if (userGuess < 1 || userGuess > 100) {
-            Scanner input = new Scanner(System.in);
-            System.out.println("That number is outside of the valid range. Guess a number between 1 and 100:");
-            validateRangeOf(Integer.parseInt(input.nextLine()));
-        }
-    }
-
-    public static void processUserGuess(Scanner input) {
-        int userGuess = Integer.parseInt(input.nextLine());
-        validateRangeOf(userGuess);
-//        if (too high) {
-//
-//        } else if (too low) {
-//
-//        } else (win) {
-//
-//        }
-
-    }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int randomNumber = (int) (Math.random() * 100) + 1;
         System.out.println("Welcome to HighLow! I'm thinking of a number between 1 and 100. Guess my number:");
-
-
-
-
+        playGame(input);
     }
 
+    public static void playGame(Scanner input) {
+        int guessCounter = 0;
+        int randomNumber = (int) (Math.random() * 100) + 1;
+        validateUserGuess(randomNumber, input, guessCounter);
+        System.out.println("Would you like to play again? [ y | n ]");
+        if (input.nextLine().toLowerCase().equals("y")) {
+            System.out.println("I'm thinking of a number between 1 and 100. Guess my number:");
+            playGame(input);
+        } else {
+            System.out.println("Thanks for playing. Have a nice day!");
+        }
+    }
+
+    public static void validateUserGuess(int randomNumber, Scanner input, int guessCounter) {
+        // Bugs:
+        // * Fix empty strings
+        // * Fix extra whitespace
+//        if (input.nextLine().isEmpty()) {
+//            input.nextLine(); // This clear the scanner of invalid input.
+//            System.out.println("Invalid input: You may not enter an empty return.");
+//            validateUserGuess(randomNumber, input);
+//        }
+
+        ++guessCounter;
+        // Confirm user guess is integer
+        if (!input.hasNextInt()) {
+            input.nextLine(); // This clear the scanner of invalid input.
+            System.out.println("Invalid input: Your guess must be an integer between 1 and 100.");
+            validateUserGuess(randomNumber, input, guessCounter);
+        } else {
+            // Confirm user guess is in range
+            int userInput = Integer.parseInt(input.nextLine());
+            if (userInput < 1 || userInput > 100) {
+                System.out.println("Invalid input: Your guess must be between 1 and 100.");
+                validateUserGuess(randomNumber, input, guessCounter);
+            } else {
+                processUserGuess(randomNumber, userInput, input, guessCounter);
+            }
+        }
+    }
+
+    public static void processUserGuess(int randomNumber, int userInput, Scanner input, int guessCounter) {
+        if (userInput > randomNumber) {
+            System.out.println("LOWER");
+            validateUserGuess(randomNumber, input, guessCounter);
+        } else if (userInput < randomNumber) {
+            System.out.println("HIGHER");
+            validateUserGuess(randomNumber, input, guessCounter);
+        } else {
+            System.out.format("GOOD GUESS! You figured it out in %d guesses.%n", guessCounter);
+        }
+    }
 }
