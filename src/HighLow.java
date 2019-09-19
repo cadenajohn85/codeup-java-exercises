@@ -30,8 +30,7 @@ public class HighLow {
         }
     }
 
-    public static void processUserGuess() {
-        Scanner input = new Scanner(System.in);
+    public static void processUserGuess(Scanner input) {
         int userGuess = Integer.parseInt(input.nextLine());
         validateRangeOf(userGuess);
 //        if (too high) {
@@ -48,6 +47,7 @@ public class HighLow {
         Scanner input = new Scanner(System.in);
         int randomNumber = (int) (Math.random() * 100) + 1;
         System.out.println("Welcome to HighLow! I'm thinking of a number between 1 and 100. Guess my number:");
+
 
 
 

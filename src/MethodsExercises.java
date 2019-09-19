@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class MethodsExercises {
 
-    public static int add(int num1, int num2) {
+    public static double add(double num1, double num2) {
         return num1 + num2;
     }
 
-    public static int subtract(int num1, int num2) {
+    public static double subtract(double num1, double num2) {
         return num1 - num2;
     }
 
-    public static int multiply(int num1, int num2) {
+    public static double multiply(double num1, double num2) {
         return num1 * num2;
     }
 
@@ -18,22 +18,24 @@ public class MethodsExercises {
         return num1 / num2;
     }
 
-    public static int divideInts(int num1, int num2) {
-        if (num2 == 0) {
-            // Can't return an error message;
-            return 55555;
-        } else {
-            return num1 / num2;
-        }
-    }
+//    public static int divideInts(int num1, int num2) {
+//        if (num2 == 0) {
+//            // Can't return an error message;
+//            return 55555;
+////            System.out.println("You entered 0 for the second operand -- division by zero is not possible.");
+////            break;
+//        } else {
+//            return num1 / num2;
+//        }
+//    }
 
-    public static int modulo(int num1, int num2) {
+    public static double modulo(double num1, double num2) {
         return num1 % num2;
     }
 
-    public static int bonusMult(int num1, int num2) {
-        int total = 0;
-        for (int i = 0; i < java.lang.Math.abs(num1); i++) {
+    public static double bonusMult(double num1, double num2) {
+        double total = 0;
+        for (double i = 0; i < java.lang.Math.abs(num1); i++) {
             total += num2;
         }
         if (num1 != java.lang.Math.abs(num1)) {
@@ -42,15 +44,15 @@ public class MethodsExercises {
         return total;
     }
 
-    public static int recursiveMult(int num1, int num2) {
+    public static double recursiveMult(double num1, double num2) {
         // If both numbers are negative, turn them positive
-        if (Integer.signum(num1) == -1 && Integer.signum(num2) == -1) {
+        if (Integer.signum((int) num1) == -1 && Integer.signum((int) num2) == -1) {
             num1 = java.lang.Math.abs(num1);
             num2 = java.lang.Math.abs(num2);
         }
         // If number2 is negative, avoid stack overflow by swapping values of num1 and num2
-        if (Integer.signum(num2) == -1) {
-            int placeholder = num1;
+        if (Integer.signum((int) num2) == -1) {
+            double placeholder = num1;
             num1 = num2;
             num2 = placeholder;
         }
@@ -73,9 +75,22 @@ public class MethodsExercises {
 //        If the input is invalid, prompt the user again.
 //                Hint: recursion might be helpful here!
 
-//    public static int getInteger(int min, int max) {
-//
-//    }
+    public static int getInteger(int min, int max) {
+        Scanner input = new Scanner(System.in);
+        if (input.hasNextInt()) {
+//            System.out.println("Valid input.");
+            int userInput = Integer.parseInt(input.nextLine());
+            if (userInput < min || userInput > max) {
+                System.out.println("Invalid input: You must input an integer between 1 and 10.");
+                return getInteger(1, 10);
+            } else {
+                return userInput;
+            }
+        } else {
+            System.out.println("Invalid input: You must input an integer.");
+            return getInteger(1, 10);
+        }
+    }
 
     //Problem 3
 
@@ -115,24 +130,28 @@ public class MethodsExercises {
     }
 
     public static void main(String[] Args) {
+        Scanner input = new Scanner(System.in);
+
+        // Problem #1 Method Calls
 //        System.out.println(add(3, 7));
 //        System.out.println(subtract(3, 7));
 //        System.out.println(multiply(3, 7));
-    // Divide only returns the quotient if the parameters are defined as int, even if the method returns a double.
 //        System.out.println(divideDoubles(3, 7));
-//        System.out.println(divideInts(3, 7));
+//        System.out.println(divideDoubles(8, 0));
 //        System.out.println(modulo(8, 3));
-
-        System.out.println(divideDoubles(8, 0));
-        System.out.println(divideInts(8, 0));
-
 //        System.out.println(bonusMult(4, 7));
 //        System.out.println(recursiveMult(9, -5));
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the number of sides for the dice:");
-        int diceSize = Integer.parseInt(input.nextLine());
-        rollDice(diceSize);
+        // Problem #2 Method Calls
+        System.out.print("Enter a number between 1 and 10: ");
+        int userInput = getInteger(1, 10);
+
+        // Problem #4 Method Calls
+//        System.out.println("Please enter the number of sides for the dice:");
+//        int diceSize = Integer.parseInt(input.nextLine());
+//        rollDice(diceSize);
+
+
 
     }
 
