@@ -14,40 +14,82 @@ public class Input {
         return scanner.nextLine();
     }
 
+    public String getString(String prompt) {
+        System.out.println(prompt);
+        return scanner.nextLine();
+    }
+
     public boolean yesNo() {
         String userString = scanner.nextLine();
         return (userString.equalsIgnoreCase("yes") ||
                 userString.equalsIgnoreCase("y"));
     }
 
+    public boolean yesNo(String prompt) {
+        System.out.println(prompt);
+        String userString = scanner.nextLine();
+        return (userString.equalsIgnoreCase("yes") ||
+                userString.equalsIgnoreCase("y"));
+    }
+
     public int getInt() {
-        return scanner.nextInt();
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    public int getInt(String prompt) {
+        System.out.println(prompt);
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public int getInt(int min, int max) {
         int userInt = Integer.parseInt(scanner.nextLine());
         if (userInt < min || userInt > max) {
+            System.out.format("That number is out of range.  Please enter an integer between %d and %d.%n", min, max);
             return getInt(min, max);
-            } else {
-                return userInt;
-            }
+        } else {
+            return userInt;
         }
+    }
+
+    public int getInt(int min, int max, String prompt) {
+        System.out.println(prompt);
+        int userInt = Integer.parseInt(scanner.nextLine());
+        if (userInt < min || userInt > max) {
+            System.out.format("That number is out of range.  Please enter an integer between %d and %d.%n", min, max);
+            return getInt(min, max);
+        } else {
+            return userInt;
+        }
+    }
 
     public double getDouble() {
-        return scanner.nextDouble();
+        return Double.parseDouble(scanner.nextLine());
+    }
+
+    public double getDouble(String prompt) {
+        System.out.println(prompt);
+        return Double.parseDouble(scanner.nextLine());
     }
 
     public double getDouble(double min, double max) {
         double userDouble = Double.parseDouble(scanner.nextLine());
         if (userDouble < min || userDouble > max) {
+            System.out.format("That number is out of range.  Please enter a double between %f and %f.%n", min, max);
             return getDouble(min, max);
         } else {
             return userDouble;
         }
     }
 
-
-
-
+    public double getDouble(double min, double max, String prompt) {
+        System.out.println(prompt);
+        double userDouble = Double.parseDouble(scanner.nextLine());
+        if (userDouble < min || userDouble > max) {
+            System.out.format("That number is out of range.  Please enter a double between %f and %f.%n", min, max);
+            return getDouble(min, max);
+        } else {
+            return userDouble;
+        }
+    }
 
 }
