@@ -7,19 +7,21 @@ public class Input {
     private Scanner scanner;
 
     public Input() {
-        scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in);
     }
 
     public String getString() {
-        return scanner.nextLine();
+        System.out.println("Type something:");
+        return this.scanner.nextLine();
     }
 
     public String getString(String prompt) {
         System.out.println(prompt);
-        return scanner.nextLine();
+        return this.scanner.nextLine();
     }
 
     public boolean yesNo() {
+        System.out.println("Type y/n:");
         String userString = scanner.nextLine();
         return (userString.equalsIgnoreCase("yes") ||
                 userString.equalsIgnoreCase("y"));
@@ -33,6 +35,7 @@ public class Input {
     }
 
     public int getInt() {
+        System.out.println("Type an integer:");
         return Integer.parseInt(scanner.nextLine());
     }
 
@@ -42,7 +45,7 @@ public class Input {
     }
 
     public int getInt(int min, int max) {
-        int userInt = Integer.parseInt(scanner.nextLine());
+        int userInt = getInt();
         if (userInt < min || userInt > max) {
             System.out.format("That number is out of range.  Please enter an integer between %d and %d.%n", min, max);
             return getInt(min, max);
@@ -63,6 +66,7 @@ public class Input {
     }
 
     public double getDouble() {
+        System.out.println("Type a decimal number:");
         return Double.parseDouble(scanner.nextLine());
     }
 
@@ -72,9 +76,9 @@ public class Input {
     }
 
     public double getDouble(double min, double max) {
-        double userDouble = Double.parseDouble(scanner.nextLine());
+        double userDouble = getDouble();
         if (userDouble < min || userDouble > max) {
-            System.out.format("That number is out of range.  Please enter a double between %f and %f.%n", min, max);
+            System.out.format("That number is out of range.  Please enter a decimal number between %f and %f.%n", min, max);
             return getDouble(min, max);
         } else {
             return userDouble;
@@ -85,7 +89,7 @@ public class Input {
         System.out.println(prompt);
         double userDouble = Double.parseDouble(scanner.nextLine());
         if (userDouble < min || userDouble > max) {
-            System.out.format("That number is out of range.  Please enter a double between %f and %f.%n", min, max);
+            System.out.format("That number is out of range.  Please enter a decimal number between %f and %f.%n", min, max);
             return getDouble(min, max);
         } else {
             return userDouble;

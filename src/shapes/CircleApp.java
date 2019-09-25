@@ -12,14 +12,13 @@ public class CircleApp {
     }
 
     public static void makeCircle(Input input) {
-        System.out.println("Please input the radius of the circle:");
-        double userRadius = input.getDouble();
-        Circle userCircle = new Circle(userRadius);
+//        double userRadius = input.getDouble();
+//        Circle userCircle = new Circle(userRadius); // Not needed because Circle already has a radius property
+        Circle userCircle = new Circle(input.getDouble("Please input the radius of the circle:"));
         circleCount++;
         System.out.format("The circumference is: %f units.%n", userCircle.getCircumference());
         System.out.format("The area is: %f units.%n", userCircle.getArea());
-        System.out.println("Would you like to create another circle?");
-        if (input.yesNo()) {
+        if (input.yesNo("Would you like to create another circle?")) {
             makeCircle(input);
         } else {
             displayCircleCount();

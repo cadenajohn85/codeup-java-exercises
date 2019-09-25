@@ -4,20 +4,26 @@ public class Person {
 
     // returns the person's name
     public String getName() {
-        return name;
+//        return name;
+        return this.name; // Best practice
     }
+
     // changes the name property to the passed value
     public void setName(String newName) {
-        name = newName;
+//        name = newName;
+        this.name = newName; // Best practice
     }
+
     // prints a message to the console using the person's name
     public void sayHello() {
-        System.out.println("Hello, I'm " + name + "!");
+//        System.out.println("Hello, I'm " + name + "!");
+        System.out.println("Hello, I'm " + this.getName() + "!"); // Preserve any formatting I did in my getter, rather than displaying my unformatted variable
     }
 
     //Constructor
     public Person(String someName) {
-        this.name = someName;
+//        this.name = someName;
+        setName(someName); // Use the setter to preserve any special processes, e.g., password hashing
     }
 
     public static void main(String[] args) {
