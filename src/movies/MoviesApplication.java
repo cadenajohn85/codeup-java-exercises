@@ -88,13 +88,7 @@ public class MoviesApplication {
 
     private static void addNewMovie() {
         String userMovieName = input.getString("What is the name of the new movie?");
-        System.out.println("Your options for genre are:");
-        System.out.println("1 -- animated");
-        System.out.println("2 -- drama");
-        System.out.println("3 -- horror");
-        System.out.println("4 -- musical");
-        System.out.println("5 -- sci-fi");
-        System.out.println("6 -- cancel and return to main menu");
+        displayAddMovieMenu();
         int userMovieCategory = input.getInt(1, 6, "Please enter a number from the menu above:");
         switch (userMovieCategory) {
             case 1:
@@ -127,6 +121,16 @@ public class MoviesApplication {
                 break;
             // No default case because getInt prevents the user from giving an integer outside the range of the menu options
         }
+    }
+
+    private static void displayAddMovieMenu() {
+        System.out.println("Your options for genre are:");
+        System.out.println("1 -- animated");
+        System.out.println("2 -- drama");
+        System.out.println("3 -- horror");
+        System.out.println("4 -- musical");
+        System.out.println("5 -- sci-fi");
+        System.out.println("6 -- cancel and return to main menu");
     }
 
 }

@@ -30,10 +30,9 @@ public class ArraysExercises {
     }
 
     private static Person[] addPerson(Person[] arrayOfPeople, Person somePerson) {
-//        array Arrays.copyOf(array, length)
-        Person[] newPeopleArray = Arrays.copyOf(arrayOfPeople, arrayOfPeople.length + 1);
-        newPeopleArray[newPeopleArray.length - 1] = somePerson;
-        return newPeopleArray;
+        Person[] output = Arrays.copyOf(arrayOfPeople, arrayOfPeople.length + 1);
+        output[output.length - 1] = somePerson;
+        return output;
     }
 
 }
