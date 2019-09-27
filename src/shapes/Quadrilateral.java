@@ -14,12 +14,12 @@ abstract class Quadrilateral extends Shape implements Measurable {
         return this.length;
     }
 
-    abstract void setLength();
+    abstract void setLength(double someLength);
 
     public double getWidth() {
         return this.length;
     }
 
-    abstract void setWidth();
+    abstract void setWidth(double someWidth);
 
 }
