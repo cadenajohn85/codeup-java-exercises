@@ -7,19 +7,23 @@ public class Rectangle extends Quadrilateral implements Measurable {
     }
 
     public void setLength(double someLength) {
-        this.length = someLength;
+//        this.length = someLength; // Works but less clear
+        super.length = someLength;
     }
 
     public void setWidth(double someWidth) {
-        this.width = someWidth;
+//        this.width = someWidth;
+        super.width = someWidth;
     }
 
     public double getPerimeter() {
-        return (this.length * 2) + (this.width *2);
+//        return (this.length * 2) + (this.width *2);
+        return (super.length * 2) + (super.width *2);
     }
 
     public double getArea() {
-        return (this.length * this.width);
+//        return (this.length * this.width);
+        return (super.length * 2) + (super.width *2);
     }
 
     // Inheritance and Polymorphism Exercise
