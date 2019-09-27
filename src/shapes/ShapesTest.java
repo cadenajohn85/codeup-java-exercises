@@ -24,6 +24,7 @@ public class ShapesTest {
                 // ... both Square and Rectangle are lacking getLength methods.
                 // It exists on Quadrilateral, but nothing is ever done with it.
                 // (How does that affect the answer?)
+                // ... is it because there is no such method in Measurable, and that's the data type of myShape?
 
         // Inheritance and Polymorphism Exercise
 
