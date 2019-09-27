@@ -8,6 +8,7 @@ public class Phone {
 
     public Phone(double sS, String OS)  {
         this.screenSize = sS;
+        this.OS = OS;
     }
 
     public String getNumber() {
