@@ -36,12 +36,22 @@ public class Input {
 
     public int getInt() {
         System.out.println("Type an integer:");
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            return Integer.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("That was not an integer.");
+            return getInt();
+        }
     }
 
     public int getInt(String prompt) {
         System.out.println(prompt);
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            return Integer.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("That was not an integer.");
+            return getInt(prompt);
+        }
     }
 
     public int getInt(int min, int max) {
@@ -56,23 +66,39 @@ public class Input {
 
     public int getInt(int min, int max, String prompt) {
         System.out.println(prompt);
-        int userInt = Integer.parseInt(scanner.nextLine());
-        if (userInt < min || userInt > max) {
-            System.out.format("That number is out of range.  Please enter an integer between %d and %d.%n", min, max);
-            return getInt(min, max);
-        } else {
-            return userInt;
+        try {
+            int userInt = Integer.valueOf(scanner.nextLine());
+            if (userInt < min || userInt > max) {
+                System.out.format("That number is out of range.  Please enter an integer between %d and %d.%n", min, max);
+                return getInt(min, max);
+            } else {
+                return userInt;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid integer.");
+            return getInt(min, max, prompt);
         }
     }
 
     public double getDouble() {
         System.out.println("Type a decimal number:");
-        return Double.parseDouble(scanner.nextLine());
+        try {
+            return Double.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid decimal number.");
+            return getDouble();
+        }
     }
 
     public double getDouble(String prompt) {
         System.out.println(prompt);
-        return Double.parseDouble(scanner.nextLine());
+        try {
+            return Double.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid decimal number.");
+            return getDouble(prompt);
+        }
+
     }
 
     public double getDouble(double min, double max) {
@@ -87,12 +113,37 @@ public class Input {
 
     public double getDouble(double min, double max, String prompt) {
         System.out.println(prompt);
-        double userDouble = Double.parseDouble(scanner.nextLine());
-        if (userDouble < min || userDouble > max) {
-            System.out.format("That number is out of range.  Please enter a decimal number between %f and %f.%n", min, max);
-            return getDouble(min, max);
-        } else {
-            return userDouble;
+        try {
+            double userDouble = Double.valueOf(scanner.nextLine());
+            if (userDouble < min || userDouble > max) {
+                System.out.format("That number is out of range.  Please enter a decimal number between %f and %f.%n", min, max);
+                return getDouble(min, max);
+            } else {
+                return userDouble;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid double.");
+            return getDouble(min, max, prompt);
+        }
+    }
+
+    public int getBinary() {
+        System.out.println("Type a number in binary:");
+        try {
+            return Integer.valueOf(scanner.nextLine(), 2);
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid number in binary.");
+            return getBinary();
+        }
+    }
+
+    public int getHex() {
+        System.out.println("Type a number in hexadecimal:");
+        try {
+            return Integer.valueOf(scanner.nextLine(), 16);
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a valid number in hexadecimal.");
+            return getHex();
         }
     }
 

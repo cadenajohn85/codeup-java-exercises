@@ -24,6 +24,19 @@ public class InputTest {
 //        System.out.println(input.getDouble(-25, 25));
 //        input.getDouble(-25, 25, "Please enter a double between -25 and 25.");
 
+        // 10/01/2019 -- Improving Input class with Exceptions
+//        input.getInt();
+//        input.getInt("I need an integer.");
+//        input.getInt(0, 5);
+//        input.getInt(0, 5, "Give me an integer between 0 and 5");
+
+//        input.getDouble();
+//        input.getDouble("I need a double.");
+//        input.getDouble(-5, 5);
+//        input.getDouble(-5, 5, "I need a double between -5 and 5.");
+
+//        System.out.println("Your number in decimal is: " + input.getBinary());
+//        System.out.println("Your number in decimal is: " + input.getHex());
 
 
 
