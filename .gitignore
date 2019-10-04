@@ -3,4 +3,4 @@
 *.class
 out/*
 .DS_Store
-src/BonusSandbox.java
+src/BonusSandbox
